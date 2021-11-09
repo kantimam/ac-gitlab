@@ -41,6 +41,12 @@ async function init() {
 
         app.post('/gitlab', async (req: Request, res: Response) => {
             console.log(req);
+            console.log("received gitlab post");
+            res.send(req.body)
+        })
+
+        app.get('/gitlab', async (req: Request, res: Response) => {
+            console.log("received gitlab get");
             res.send(req.body)
         })
 
