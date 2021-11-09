@@ -10,7 +10,7 @@ async function init() {
         // Init Self-Hosted
         const client = new Client(
             "k.imamov+ac-test-gitlab@ondigo.de",
-            "",
+            "8anG74k.Jq($}E>v",
             "ON Gitlab-Integration TEST",
             "ONDIGO GmbH & Co. KG",
             undefined,
@@ -19,7 +19,10 @@ async function init() {
         await client.issueToken();
 
         const app: Application = express()
-
+        app.get('/', async (req: Request, res: Response) => {
+            console.log("res");
+            res.send("hey");
+        })
 
         app.get('/projects', async (req: Request, res: Response) => {
             try {
@@ -37,7 +40,8 @@ async function init() {
         })
 
         app.post('/gitlab', async (req: Request, res: Response) => {
-            console.log(req.body)
+            console.log(req);
+            res.send(req.body)
         })
 
         app.listen(PORT, function () {
